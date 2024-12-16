@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>MarkItDown 文档转换器</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
+
 <body>
     <div class="container">
         <h1>MarkItDown 文档转换器</h1>
+        <div align="center">
+            <p>
+                Powered by
+                <a href="https://github.com/microsoft/markitdown">Microsoft/MarkItDown</a>
+            </p>
+        </div>
         <form id="upload-form">
-            <input type="file" id="file-input" name="files" multiple required>
+            <input type="file" id="file-input" name="files" multiple required />
             <button type="submit" id="upload-button">上传并转换</button>
         </form>
         <button id="clear-cache">清理缓存</button>
-        <div id="loading" class="loading" style="display: none;">
+        <div id="loading" class="loading" style="display: none">
             <div class="spinner"></div>
             <span>正在转换...</span>
         </div>
@@ -27,8 +35,7 @@
                         <th>显示内容</th>
                     </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>
@@ -41,4 +48,5 @@
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>
