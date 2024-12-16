@@ -6,8 +6,7 @@ import tempfile
 
 app = Flask(__name__)
 
-# 配置上传文件的最大大小（例如 100MB）
-app.config['MAX_CONTENT_LENGTH'] = os.environ.get("MAX_FILE_SIZE", 15 * 1024 * 1024)
+app.config['MAX_CONTENT_LENGTH'] = os.environ.get("MAX_FILE_SIZE", 15 * 1024 * 1024)    # 此处是默认为15MB
 # 支持的文件扩展名
 ALLOWED_EXTENSIONS = {
     'pdf', 'pptx', 'docx', 'xlsx', 'csv', 'json', 'xml', 'html', 'htm'
