@@ -158,3 +158,18 @@ button.display-content:hover {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.markdown-alert{
+    padding: var(--base-size-8) var(--base-size-16);
+    margin-bottom: var(--base-size-16);
+    color: inherit;
+    border-left: .25em solid var(--borderColor-default);
+}
+
+.markdown-alert.markdown-alert-important {
+    border-left-color: var(--borderColor-done-emphasis);
+}
+
+.markdown-heading {
+    position: relative;
+}
