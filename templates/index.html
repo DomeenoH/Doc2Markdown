@@ -10,9 +10,13 @@
         <h1>MarkItDown 文档转换器</h1>
         <form id="upload-form">
             <input type="file" id="file-input" name="files" multiple required>
-            <button type="submit">上传并转换</button>
+            <button type="submit" id="upload-button">上传并转换</button>
         </form>
         <button id="clear-cache">清理缓存</button>
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <span>正在转换...</span>
+        </div>
         <div id="results-section">
             <h2>转换记录</h2>
             <table id="results-table">

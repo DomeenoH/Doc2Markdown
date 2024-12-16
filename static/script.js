@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('content-modal');
     const modalContent = document.getElementById('markdown-content');
     const closeButton = document.querySelector('.close-button');
+    const loadingIndicator = document.getElementById('loading');
+    const uploadButton = document.getElementById('upload-button');
 
     // 加载本地存储的记录
     loadRecordsFromStorage();
@@ -17,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('请至少选择一个文件进行上传。');
             return;
         }
+
+        // 显示加载指示器并禁用上传按钮
+        showLoading(true);
+        uploadButton.disabled = true;
 
         const formData = new FormData();
         for (let file of files) {
@@ -47,6 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error:', error);
             alert('发生错误，请重试。');
+        })
+        .finally(() => {
+            // 隐藏加载指示器并启用上传按钮
+            showLoading(false);
+            uploadButton.disabled = false;
         });
     });
 
@@ -125,5 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayContent(content) {
         modalContent.textContent = content;
         modal.style.display = 'block';
+    }
+
+    function showLoading(show) {
+        if (show) {
+            loadingIndicator.style.display = 'flex';
+        } else {
+            loadingIndicator.style.display = 'none';
+        }
     }
 });
