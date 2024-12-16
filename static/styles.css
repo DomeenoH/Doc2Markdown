@@ -173,3 +173,7 @@ button.display-content:hover {
 .markdown-heading {
     position: relative;
 }
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+    color: var(--fgColor-done);
+}
