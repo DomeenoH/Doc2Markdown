@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #fff;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #28a745;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: #218838;
+}
+
+#clear-cache {
+    background: #dc3545;
+    margin-left: 10px;
+}
+
+#clear-cache:hover {
+    background: #c82333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+a.download-link {
+    padding: 8px 12px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+a.download-link:hover {
+    background: #0056b3;
+}
+
+button.display-content {
+    padding: 8px 12px;
+    background: #17a2b8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.display-content:hover {
+    background: #117a8b;
+}
+
+/* 模态窗口样式 */
+.modal {
+    display: none; /* 隐藏模态窗口 */
+    position: fixed; /* 固定位置 */
+    z-index: 1; /* 位于最上层 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全屏宽度 */
+    height: 100%; /* 全屏高度 */
+    overflow: auto; /* 如果需要，添加滚动条 */
+    background-color: rgba(0,0,0,0.4); /* 半透明背景 */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% 距离顶部，居中 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 宽度 */
+    max-height: 70%; /* 最大高度 */
+    overflow-y: auto; /* 垂直滚动 */
+    border-radius: 8px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+}

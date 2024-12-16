@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>MarkItDown 文档转换器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MarkItDown 文档转换器</h1>
+        <form id="upload-form">
+            <input type="file" id="file-input" name="files" multiple required>
+            <button type="submit">上传并转换</button>
+        </form>
+        <button id="clear-cache">清理缓存</button>
+        <div id="results-section">
+            <h2>转换记录</h2>
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>原文件名</th>
+                        <th>下载 Markdown</th>
+                        <th>显示内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="content-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Markdown 内容</h2>
+            <pre id="markdown-content"></pre>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
