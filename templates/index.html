@@ -1,63 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>MarkItDown 文档转换器</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc2Markdown - 文件上传与展示</title>
+    <!-- 引入样式表 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 </head>
-
 <body>
     <div class="container">
-        <h1>MarkItDown 文档转换器</h1>
-        <div align="center">
-            <p>
-                ✅可以选择多个文件上传同时进行转换，转换后的结果保存在本地，服务器不保存任何内容
-            </p>
-            <p>
-                🚫暂时不支持图片，等后面微软把轮子更新了可能会支持
-            </p>
-            <p>
-                🎉Powered by
-                <a href="https://github.com/microsoft/markitdown">Microsoft/MarkItDown</a>
-                &
-                <a href="https://vercel.com">Vercel</a>
-            </p>
-            <p>
-                ✨Doc2Markdown on <a href="https://github.com/GamerNoTitle/Doc2Markdown">Github</a>
-            </p>
-        </div>
-        <form id="upload-form">
-            <input type="file" id="file-input" name="files" multiple required />
+        <h1>Doc2Markdown - 上传文件转换为 Markdown</h1>
+        <p>支持文件类型：<strong>docx、txt、md</strong></p>
+
+        <!-- 上传文件表单 -->
+        <form id="upload-form" method="POST" action="{{ url_for('convert_file') }}" enctype="multipart/form-data">
+            <label for="file-input">选择文件：</label>
+            <input type="file" id="file-input" name="file" accept=".docx,.txt,.md" required />
             <button type="submit" id="upload-button">上传并转换</button>
         </form>
-        <button id="clear-cache">清理缓存</button>
-        <div id="loading" class="loading" style="display: none">
-            <div class="spinner"></div>
-            <span>正在转换...</span>
-        </div>
-        <div id="results-section">
-            <h2>转换记录</h2>
-            <table id="results-table">
-                <thead>
-                    <tr>
-                        <th>原文件名</th>
-                        <th>下载 Markdown</th>
-                        <th>显示内容</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
-    <div id="content-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Markdown 内容</h2>
-            <pre id="markdown-content"></pre>
-        </div>
-    </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
 
+        <!-- 加载中提示 -->
+        <div id="loading" style="display:none;">
+            <p>文件正在上传并转换，请稍候...</p>
+        </div>
+
+        <!-- 转换结果展示区域 -->
+        <div id="result-section" style="margin-top: 20px;">
+            <h2>转换后的 Markdown 内容：</h2>
+            <div id="markdown-output" style="border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9;"></div>
+        </div>
+    </div>
+
+    <!-- 引入 Marked.js 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // 提交表单时显示加载提示
+        document.getElementById("upload-form").onsubmit = function () {
+            document.getElementById("loading").style.display = "block";
+        };
+
+        // 渲染 Markdown 内容（示例）
+        const markdownContent = `{{ markdown_content | safe }}`; // 后端传入的 Markdown 内容
+        if (markdownContent) {
+            document.getElementById("markdown-output").innerHTML = marked.parse(markdownContent);
+        }
+    </script>
+</body>
 </html>
