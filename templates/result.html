@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 转换结果</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <h1>文件: {{ filename }}</h1>
+    <h2>Markdown 转换结果</h2>
+    <div id="markdown-content"></div>
+
+    <script>
+        // 使用 Marked.js 将 Markdown 转换为 HTML
+        const markdownContent = `{{ markdown_content | safe }}`;
+        document.getElementById("markdown-content").innerHTML = marked.parse(markdownContent);
+    </script>
+</body>
+</html>
